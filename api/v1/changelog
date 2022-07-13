@@ -1,1 +1,6 @@
-[Downloader] = true
+Changelog:
+Wednesday, July 13, 2022
+[Added] - DiscordRPC
+[Added] - Polygon Limiters
+[Added] - More Parameters Values
+[Added] - Downloader
