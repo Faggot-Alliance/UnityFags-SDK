@@ -1,7 +1,12 @@
-<color=red>Changelog:
+Changelog:
+
 Wednesday, July 13, 2022
+
 [Added] - DiscordRPC
 [Added] - Polygon Limiters
 [Added] - More Parameters Values
 [Added] - Downloader
-</color>
+---------------------------------
+[Deleted] - Poly Limit
+[Deleted] - Particle Limit
+[HotSwapper] - [Mack10]
