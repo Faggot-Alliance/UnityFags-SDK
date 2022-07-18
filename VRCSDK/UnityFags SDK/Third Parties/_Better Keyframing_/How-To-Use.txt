@@ -1,0 +1,7 @@
+Better Keyframing by surfknasen#3999.
+
+How to use:
+1. Navigate to Window -> Better Keyframing.
+2. Dock the new window under your animation window.
+3. Drag and drop the music.
+4. You're ready to go!

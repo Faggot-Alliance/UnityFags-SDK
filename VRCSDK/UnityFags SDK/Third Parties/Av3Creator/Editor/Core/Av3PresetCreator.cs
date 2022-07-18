@@ -1,0 +1,247 @@
+﻿#region
+using Av3Creator.Utils;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using UnityEditor;
+using UnityEditor.Animations;
+using UnityEngine;
+using VRC.SDK3.Avatars.Components;
+using VRC.SDK3.Avatars.ScriptableObjects;
+#endregion
+
+namespace Av3Creator.Core
+{
+    [Serializable]
+    public enum Av3PresetOption
+    {
+        NoChange,
+        Default,
+        Toggled
+    }
+
+    [Serializable]
+    public class Av3Preset
+    {
+        public VRCExpressionParameters.Parameter Parameter;
+        public Av3PresetOption State;
+    }
+
+    public class Av3PresetCreator
+    {
+        public VRCAvatarDescriptor AvatarDescriptor;
+        public List<Av3Preset> BooleanParameters = new List<Av3Preset>();
+        private Av3Settings Settings;
+
+        public Av3PresetCreator(VRCAvatarDescriptor descriptor, Av3Settings settings)
+        {
+            if (descriptor == null) return;
+            AvatarDescriptor = descriptor;
+            Settings = settings;
+        }
+
+        string name;
+
+        private readonly string ParameterBase = "A3C/Preset/";
+        private readonly string ToggleBase = "A3C/Toggle/";
+        public void DrawGUI()
+        {
+            using (new EditorGUILayout.VerticalScope(Av3StyleManager.Styles.Padding5))
+            {
+                GUILayout.Label("Preset Creator helps you with creation of Parameter Drivers for toggles/bools, that is, one button that enable or disable multiples toggles at once. " +
+                    "At the moment, this is a manual operation and you have to think what is \"Default\" and what is \"Toggled\".\n\n" +
+                    "<b>Think like a toggle in VRChat, if the toggle is enabled in VRC, mark the parameter as \"Toggled\", if is disabled mark as \"Default\", else just keep in \"No Change\"</b>", Av3StyleManager.Styles.Description);
+
+                EditorGUILayout.Space(10);
+                if (AvatarDescriptor.expressionParameters == null) return;
+
+
+                BooleanParameters = AvatarDescriptor.expressionParameters.parameters
+                    .Where(x => x.valueType == VRCExpressionParameters.ValueType.Bool && !x.name.StartsWith(ParameterBase))
+                    .Select(x => new Av3Preset()
+                    {
+                        Parameter = x,
+                        State = BooleanParameters.Any(y => y.Parameter == x) ? BooleanParameters.Single(y => y.Parameter == x).State : Av3PresetOption.NoChange
+                    }).ToList();
+                if (BooleanParameters == null || BooleanParameters.Count == 0)
+                {
+                    using (new EditorGUILayout.HorizontalScope(new GUIStyle(GUI.skin.box)
+                    {
+                        padding = new RectOffset(10, 0, 10, 10),
+                        margin = new RectOffset(0, 0, 0, 0)
+                    }))
+                        EditorGUILayout.LabelField("No boolean parameters found on this avatar. Please create some toggles.");
+                }
+                else
+                {
+                    using (new EditorGUILayout.HorizontalScope())
+                    {
+                        EditorGUILayout.LabelField(new GUIContent("Preset Name", "Will be used to Parameter Name and Button in menu."), GUILayout.MaxWidth(100));
+                        name = EditorGUILayout.TextField(name);
+                    }
+
+                    string[] options = { "[None]" };
+                    options = options.Concat(AvatarDescriptor.expressionParameters.parameters.Select(x => x.name)).ToArray();
+
+
+                    EditorGUILayout.Space(10);
+
+                    using (new EditorGUILayout.VerticalScope())
+                    {
+                        using (new EditorGUILayout.HorizontalScope())
+                        {
+                            EditorGUILayout.LabelField("");
+                            EditorGUILayout.LabelField("No Change", GUILayout.Width(80));
+                            EditorGUILayout.LabelField(" Default", GUILayout.Width(70));
+                            EditorGUILayout.LabelField("Toggled", GUILayout.Width(70));
+                        }
+
+                        EditorGUILayout.Space(5);
+
+                        foreach (var preset in BooleanParameters)
+                        {
+                            using (new EditorGUILayout.HorizontalScope(new GUIStyle(GUI.skin.box)
+                            {
+                                padding = new RectOffset(20, 0, 1, 1),
+                                margin = new RectOffset(0, 0, 0, 0)
+                            }))
+                            {
+                                string parameterName = preset.Parameter.name;
+                                if (parameterName.StartsWith(ToggleBase))
+                                {
+                                    parameterName = parameterName.Substring(ToggleBase.Length);
+                                    EditorGUILayout.LabelField(new GUIContent(parameterName, "Generated by Av3Creator"), Av3StyleManager.Styles.GreenLabel);
+                                }
+                                else EditorGUILayout.LabelField(parameterName);
+
+                                using (new EditorGUILayout.HorizontalScope(GUILayout.Width(80)))
+                                {
+                                    EditorGUILayout.Space();
+                                    if (EditorGUILayout.Toggle(preset.State == Av3PresetOption.NoChange, GUILayout.ExpandWidth(false)))
+                                        preset.State = Av3PresetOption.NoChange;
+                                    EditorGUILayout.Space();
+                                }
+
+                                using (new EditorGUILayout.HorizontalScope(GUILayout.Width(70)))
+                                {
+                                    EditorGUILayout.Space();
+                                    if (EditorGUILayout.Toggle(preset.State == Av3PresetOption.Default, GUILayout.ExpandWidth(false)))
+                                        preset.State = Av3PresetOption.Default;
+                                    EditorGUILayout.Space();
+                                }
+
+                                using (new EditorGUILayout.HorizontalScope(GUILayout.Width(70)))
+                                {
+                                    EditorGUILayout.Space();
+                                    if (EditorGUILayout.Toggle(preset.State == Av3PresetOption.Toggled, GUILayout.ExpandWidth(false)))
+                                        preset.State = Av3PresetOption.Toggled;
+                                    EditorGUILayout.Space();
+                                }
+                            }
+                        }
+                    }
+                }
+
+                EditorGUILayout.Space(10);
+
+                using (new EditorGUI.DisabledGroupScope(!BooleanParameters.Any(x => x.State == Av3PresetOption.Default || x.State == Av3PresetOption.Toggled)))
+                    if (GUILayout.Button("Create Preset", GUILayout.Height(30)))
+                        DoThings();
+
+                if (string.IsNullOrEmpty(Settings.OutputDirectory))
+                    Av3StyleManager.DrawError("> ERROR: Missing avatar directory, please select the main folder of your avatar.", 5);
+
+                if (AvatarDescriptor?.expressionsMenu?.controls.Count >= 8
+                    && !AvatarDescriptor.expressionsMenu.controls.Any(x => x.name == "Presets" && x.type == VRCExpressionsMenu.Control.ControlType.SubMenu))
+                    Av3StyleManager.DrawWarning("> Menu doesn't have enough space!", 5);
+            }
+
+        }
+
+        private void DoThings()
+        {
+            // Lets do a lot of checks to prevent problems
+            if (AvatarDescriptor == null
+                || AvatarDescriptor?.baseAnimationLayers[Av3Layers.FX].animatorController == null
+                || AvatarDescriptor?.expressionsMenu == null
+                || string.IsNullOrEmpty(name)) return;
+            var fxController = (AvatarDescriptor.baseAnimationLayers[Av3Layers.FX].animatorController as AnimatorController);
+            if (!fxController) return;
+
+            string layerName = "A3C Preset: " + name;
+            string parameterName = ParameterBase + name;
+
+            if (AvatarDescriptor?.expressionParameters == null || !AvatarDescriptor.expressionParameters.AddParameter(parameterName, VRCExpressionParameters.ValueType.Bool)) return;
+            bool existParam = fxController.parameters.Any(x => x.name == parameterName && x.type == AnimatorControllerParameterType.Bool);
+
+            if (existParam) fxController.RemoveParameter(fxController.parameters.Single(x => x.name == parameterName && x.type == AnimatorControllerParameterType.Bool));
+            fxController.AddParameter(parameterName, AnimatorControllerParameterType.Bool);
+
+
+
+            if (fxController.layers.Any(x => x.name == layerName)) fxController.RemoveLayer(layerName); // just replace this shit
+            fxController.AddLayer(layerName);
+
+            var layers = fxController.layers;
+            var layer = layers[fxController.layers.Length - 1];
+            layer.defaultWeight = 1f;
+
+            var defaultState = layer.stateMachine.AddState("None", new Vector3(250, 20));
+
+            EditorUtility.SetDirty(defaultState);
+
+            var enableDriver = layer.stateMachine.AddState("Enable Preset", new Vector3(250, 70));
+            var parameterDriver = enableDriver.AddStateMachineBehaviour<VRCAvatarParameterDriver>();
+            foreach (var preset in BooleanParameters.Where(x => x.State != Av3PresetOption.NoChange))
+                parameterDriver.parameters.Add(new VRC.SDKBase.VRC_AvatarParameterDriver.Parameter()
+                {
+                    name = preset.Parameter.name,
+                    type = VRC.SDKBase.VRC_AvatarParameterDriver.ChangeType.Set,
+                    value = (preset.State == Av3PresetOption.Toggled ? 1 : 0)
+                });
+
+            EditorUtility.SetDirty(parameterDriver);
+            EditorUtility.SetDirty(enableDriver);
+
+            layer.stateMachine.entryPosition = layer.stateMachine.anyStatePosition + new Vector3(0, -10);
+            layer.stateMachine.anyStatePosition = layer.stateMachine.entryPosition + new Vector3(0, 40);
+            layer.stateMachine.exitPosition = layer.stateMachine.anyStatePosition + new Vector3(0, 40);
+
+            var anyStateOn = layer.stateMachine.AddAnyStateTransition(enableDriver);
+            anyStateOn.AddCondition(AnimatorConditionMode.If, 0f, parameterName);
+            anyStateOn.duration = 0f;
+
+            var anyStateOff = layer.stateMachine.AddAnyStateTransition(defaultState);
+            anyStateOff.AddCondition(AnimatorConditionMode.IfNot, 0f, parameterName);
+            anyStateOff.duration = 0f;
+
+            fxController.layers = layers;
+            EditorUtility.SetDirty(fxController);
+
+            // Find Presets Menu
+            var mainMenu = AvatarDescriptor.expressionsMenu;
+            VRCExpressionsMenu targetMenu;
+            if (mainMenu.controls.Any(x => x.name == "Presets" && x.type == VRCExpressionsMenu.Control.ControlType.SubMenu))
+                targetMenu = mainMenu.controls.First(x => x.name == "Presets" && x.type == VRCExpressionsMenu.Control.ControlType.SubMenu).subMenu;
+            else
+            {
+                var directory = Settings.OutputDirectory + "/Menus/";
+                Directory.CreateDirectory(directory);
+                targetMenu = ScriptableObject.CreateInstance<VRCExpressionsMenu>();
+                AssetDatabase.CreateAsset(targetMenu, $"{directory}Presets.asset");
+                mainMenu.controls.Add(new VRCExpressionsMenu.Control()
+                {
+                    name = "Presets",
+                    type = VRCExpressionsMenu.Control.ControlType.SubMenu,
+                    subMenu = targetMenu
+                });
+            }
+
+            targetMenu.AddToMenu(name, VRCExpressionsMenu.Control.ControlType.Button, parameterName);
+            EditorUtility.SetDirty(targetMenu);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+    }
+}

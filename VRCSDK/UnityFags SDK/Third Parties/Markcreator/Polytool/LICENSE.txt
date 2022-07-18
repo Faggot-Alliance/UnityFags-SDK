@@ -1,0 +1,13 @@
+Personal Use Closed Source Creative Tools License 2021-02-12
+
+Nobody likes license agreements, so I will keep things as short as I can!
+
+Please respect the work and effort that goes into creating better tools for everyone to create with, so:
+- Do not resell or redistribute this tool, and you do not sell derivative/modified versions of this tool.
+- This tool is meant exclusively for personal use. You cannot ship this tool as part of a commercial product or use it to provide commercial services. If you are interested in using this tool in a commercial context, please contact me.
+- Do not decompile or reverse-engineer this tool in order to retrieve its source code or make modifications.
+
+This license agreement might be updated in the future to rephrase and clarify things, as well as counteract unintended use of my work.
+
+Thank you,
+Mark

@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_ky_wind4c
+  m_Shader: {fileID: 4800000, guid: 8142549c469a04bf3b4f3a081a42c4a8, type: 3}
+  m_ShaderKeywords: _FRESINV_ON _HAVEALPHA_ON _USEDEPTHBLEND_ON
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 324e242ae58d94de685adbf57ace07bf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Cutoff: 0.5
+    - _InvFade: 1
+    - _alphaDensity: 3
+    - _alphaPower: 1
+    - _baseTexDensity: 1
+    - _baseTexSpdX: 0
+    - _baseTexSpdY: 0
+    - _baseTexU: 1
+    - _baseTexV: 1
+    - _channelDivid: 3
+    - _channelDivide: 3
+    - _depthBlend: 0
+    - _emissive: 8
+    - _emissivePower: 15
+    - _fresInv: 1
+    - _fresPower: 1
+    - _fresnelInv: 0
+    - _fresnelPower: 1
+    - _fresnellOff: 1
+    - _haveAlpha: 1
+    - _notUseB: 0
+    - _notUseBch: 0
+    - _notUseFresnel: 0
+    - _notUseG: 0
+    - _notUseGch: 0
+    - _notUseR: 0
+    - _notUseRch: 0
+    - _simpleToon: 0
+    - _texDensity: 4
+    - _texSpdX: 0
+    - _texSpdY: 0
+    - _useDepthBlend: 1
+    - _useTexColor: 0
+    - _vertColorDensity: 2
+    m_Colors:
+    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
