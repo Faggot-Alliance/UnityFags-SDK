@@ -7,33 +7,35 @@ This brought you by: Koria#0001
 Update v0.2 - Sunday, July 17, 2022
 ================================
         ADDED CONTENT
-[Added] FACS_ARES_Utilities
+[+] FACS_ARES_Utilities
+[+] Discord RPC
 [Added Import Panel <no code right now though>]
 ================================
       REMOVED CONTENT
-[Removed] LyumaAvatarEmulator 
-[Removed] GestureManager
+[-] LyumaAvatarEmulator 
+[-] GestureManager
 ================================
            CREDITS
-https://Github.com/Dean2k 
+https://Github.com/Dean2k,
 FACS Utilities
 ---------------------------------------------------------------
-https://github.com/devloli-main 
+https://github.com/devloli-main,
 Picture Importer,
 DiscordRPC,
 Importer Panel Window <I was too lazy to make my own right now>
 ---------------------------------------------------------------
-https://github.com/rurre/
+https://github.com/rurre,
 Pumkin's Avatar Tools
 ---------------------------------------------------------------
-Shatter 
+Shatter,
 VRChat Toggle Assistant
 ---------------------------------------------------------------
-https://github.com/kurotu/ 
+https://github.com/kurotu,
 VRCQuestTools
 ---------------------------------------------------------------
-**Av3Creator** by Rafa
+Av3Creator,
+Rafa
 ---------------------------------------------------------------
 Source Code: https://github.com/Faggot-Alliance/UnityFags-SDK
-Latest Release:
+Latest Release: https://github.com/Faggot-Alliance/UnityFags-SDK/releases/tag/0.2
 ---------------------------------------------------------------
