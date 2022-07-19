@@ -13,17 +13,11 @@ ADDED CONTENT
 [Added] GestureManager as a unitypackage go to VRC SDK/UnityFags/Third Parties
 [Added] LyumaAv3Creator as a unitypackage go to VRC SDK/UnityFags/Third Parties
 [Added] Password Lock by GabSith as a unitypackage go to VRC SDK/UnityFags/Third Parties
-[Added Import Panel <no code right now though>]
-================================
+[Added] Import Panel <no code right now though>]
+===================================================================
 CREDITS
 https://Github.com/Dean2k,
 FACS Utilities
----------------------------------------------------------------
-https://github.com/devloli-main,
-Picture Importer,
-DiscordRPC,
-MissingRemover <IDK>
-Importer Panel Window <I was too lazy to make my own right now>
 ---------------------------------------------------------------
 https://github.com/rurre,
 Pumkin's Avatar Tools
@@ -52,6 +46,14 @@ FACS Utilities
 https://github.com/FACS01-01,
 Safe Import
 ---------------------------------------------------------------
+Special Thanks To:
+! Devloli#8883,
+https://github.com/devloli-main,
+For
+Devloli SRC,
+Image Importer,
+DiscordRPC
+----------------------------------------------------------------------------------
 Source Code: https://github.com/Faggot-Alliance/UnityFags-SDK/tree/src
 Latest Release: https://github.com/Faggot-Alliance/UnityFags-SDK/releases/tag/0.3
----------------------------------------------------------------
+----------------------------------------------------------------------------------
