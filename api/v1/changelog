@@ -4,20 +4,16 @@ This SDK Made for a making crashers and reverse engineering avatars
 
 This brought you by: Koria#0001
 ===================================================================
-Update v0.2 - Sunday, July 17, 2022
+Update v0.3 - Sunday, July 17, 2022
 ================================
 + = [Added]
 - = [Removed/Deleted]
 
 ADDED CONTENT
-[+] FACS_ARES_Utilities
-[+] Discord RPC
-[+] PolyTool 1.7.2 CRACKED
+[Added] GestureManager as a unitypackage go to VRC SDK/UnityFags/Third Parties
+[Added] LyumaAv3Creator as a unitypackage go to VRC SDK/UnityFags/Third Parties
+[Added] Password Lock by GabSith as a unitypackage go to VRC SDK/UnityFags/Third Parties
 [Added Import Panel <no code right now though>]
-================================
-REMOVED CONTENT
-[-] LyumaAv3Emulator 
-[-] Gesture Manager
 ================================
 CREDITS
 https://Github.com/Dean2k,
@@ -41,6 +37,15 @@ VRCQuestTools
 Av3Creator,
 Rafa
 ---------------------------------------------------------------
+LyumaAv3Emulator,
+lyuma
+---------------------------------------------------------------
+Password Lock,
+GabSith
+---------------------------------------------------------------
+GestureManager,
+BlackStartx
+---------------------------------------------------------------
 Source Code: https://github.com/Faggot-Alliance/UnityFags-SDK/tree/src
-Latest Release: https://github.com/Faggot-Alliance/UnityFags-SDK/releases/tag/0.2
+Latest Release: https://github.com/Faggot-Alliance/UnityFags-SDK/releases/tag/0.3
 ---------------------------------------------------------------
