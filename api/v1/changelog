@@ -8,7 +8,7 @@ Update v0.4 - Monday, July 25, 2022
 ===================================
 + = [Added]
 - = [Removed/Deleted]
-
+% = [Changed/Revamping]
 ADDED CONTENT
 [+] Accessories Applier as a unitypackage go to VRC SDK/UnityFags/Third Parties/ApplyAccessories
 [+] KebinImports as a unitypackage go to VRC SDK/UnityFags/Third Parties/KebinImport
@@ -18,7 +18,10 @@ ADDED CONTENT
 REMOVED CONTENT
 [-] PeanutBudda Sticker Generator 
 ============================================================================================
-WIP SSTUFF
+CHANGED CONTENT
+[%] UI changes Have been added
+============================================================================================
+WIP STUFF
 A.R.E.S Hotswap
 Remake DevloliSDK Importer to UnityFags SDK Importer (Starting: Next Week)
 ============================================================================================
@@ -78,5 +81,5 @@ Image Importer,
 DiscordRPC
 ----------------------------------------------------------------------------------
 Source Code: https://github.com/Faggot-Alliance/UnityFags-SDK/tree/src
-Latest Release: https://github.com/Faggot-Alliance/UnityFags-SDK/releases/tag/0.3
+Latest Release: https://github.com/Faggot-Alliance/UnityFags-SDK/releases/tag/0.4
 ----------------------------------------------------------------------------------
