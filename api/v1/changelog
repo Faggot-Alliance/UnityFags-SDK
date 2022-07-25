@@ -4,17 +4,24 @@ This SDK Made for a making crashers and reverse engineering avatars
 
 This brought you by: Koria#0001
 ===================================================================
-Update v0.3 - Sunday, July 17, 2022
-================================
+Update v0.4 - Monday, July 25, 2022
+===================================
 + = [Added]
 - = [Removed/Deleted]
 
 ADDED CONTENT
-[Added] GestureManager as a unitypackage go to VRC SDK/UnityFags/Third Parties
-[Added] LyumaAv3Creator as a unitypackage go to VRC SDK/UnityFags/Third Parties
-[Added] Password Lock by GabSith as a unitypackage go to VRC SDK/UnityFags/Third Parties
-[Added] Import Panel <no code right now though>]
-===================================================================
+[+] Accessories Applier as a unitypackage go to VRC SDK/UnityFags/Third Parties/ApplyAccessories
+[+] KebinImports as a unitypackage go to VRC SDK/UnityFags/Third Parties/KebinImport
+[+] VRC Hot Swap V4  as a unitypackage go to VRC SDK/UnityFags/Third Parties/VRC Hotswap V4
+[+] BitActionSwitch  as a unitypackage go to VRC SDK/UnityFags/Third Parties/BitActionSwitch
+============================================================================================
+REMOVED CONTENT
+[-] PeanutBudda Sticker Generator 
+============================================================================================
+WIP SSTUFF
+A.R.E.S Hotswap
+Remake DevloliSDK Importer to UnityFags SDK Importer (Starting: Next Week)
+============================================================================================
 CREDITS
 https://Github.com/Dean2k,
 FACS Utilities
@@ -49,6 +56,18 @@ https://github.com/FACS01-01,
 Object Mirror,
 Telegram Sticker Generator,
 PeanutBuddha/https://github.com/imagitama
+---------------------------------------------------------------
+Kebin,
+Kebin Imports
+---------------------------------------------------------------
+VRCHotSwap V4,
+?????????????
+---------------------------------------------------------------
+Accessories Applier,
+???????????????????
+---------------------------------------------------------------
+BitActionSwitch,
+https://github.com/isuzu-shiranui
 ---------------------------------------------------------------
 Special Thanks To:
 ! Devloli#8883,
