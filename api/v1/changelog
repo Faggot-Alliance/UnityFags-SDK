@@ -4,22 +4,20 @@ This SDK Made for a making crashers and reverse engineering avatars
 
 This brought you by: Koria#0001
 ===================================================================
-Update v0.4 - Monday, July 25, 2022
-===================================
+Update v0.5 - Monday, Tuesday 2, 2022 4:18: AM
+==============================================
 + = [Added]
 - = [Removed/Deleted]
 % = [Changed/Revamping]
 ADDED CONTENT
-[+] Accessories Applier as a unitypackage go to VRC SDK/UnityFags/Third Parties/ApplyAccessories
-[+] KebinImports as a unitypackage go to VRC SDK/UnityFags/Third Parties/KebinImport
-[+] VRC Hot Swap V4  as a unitypackage go to VRC SDK/UnityFags/Third Parties/VRC Hotswap V4
-[+] BitActionSwitch  as a unitypackage go to VRC SDK/UnityFags/Third Parties/BitActionSwitch
+[+] Added VRCFury - To Import it go to: "VRCSDK/UnityFags SDK/Third Parties/VRCFury"
+[+] AccessioresApply -  To Import it go to: "VRCSDK/UnityFags SDK/Third Parties/ApplyAccessories"
 ============================================================================================
 REMOVED CONTENT
-[-] PeanutBudda Sticker Generator 
+[-] Null
 ============================================================================================
 CHANGED CONTENT
-[%] UI changes Have been added
+[%] UI Changes (Prob Temporary)
 ============================================================================================
 WIP STUFF
 A.R.E.S Hotswap
@@ -64,13 +62,16 @@ Kebin,
 Kebin Imports
 ---------------------------------------------------------------
 VRCHotSwap V4,
-?????????????
+https://github.com/FACS01-01
 ---------------------------------------------------------------
 Accessories Applier,
 ???????????????????
 ---------------------------------------------------------------
 BitActionSwitch,
 https://github.com/isuzu-shiranui
+---------------------------------------------------------------
+VRCFury,
+https://gitlab.com/VRCFury/
 ---------------------------------------------------------------
 Special Thanks To:
 ! Devloli#8883,
